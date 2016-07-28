@@ -67,11 +67,6 @@ int main(int argc, char** argv) {
 
     parse_args(argc, argv);
 
-    sehandle = selinux_android_file_context_handle();
-    if (sehandle) {
-        selinux_android_set_sehandle(sehandle);
-    }
-
     // Quickly throw a CLOEXEC on the socket we just inherited from init
     fcntl(android_get_control_socket("vold"), F_SETFD, FD_CLOEXEC);
     fcntl(android_get_control_socket("cryptd"), F_SETFD, FD_CLOEXEC);
